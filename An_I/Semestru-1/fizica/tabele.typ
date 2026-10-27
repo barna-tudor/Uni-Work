@@ -1,5 +1,5 @@
 // Compile:  typst compile tables.typ      Live preview:  typst watch tables.typ
-// Global setup 
+// Global setup
 
 #set page(paper: "a4", flipped: true, margin: 8.5mm)
 #set text(lang: "ro", size: 12pt)
@@ -9,38 +9,31 @@
   }
 }
 #set table(
-  inset: (x: 5pt, y: 5pt), 											// cell padding
-  stroke: 0.5pt + luma(110), 										// grid lines 
+  inset: (x: 5pt, y: 5pt), // cell padding
+  stroke: 0.5pt + luma(110), // grid lines
   fill: banded(), // default: shade the first row
 )
 
 #grid(
-  columns: (1.7fr, 1fr, 1fr), 										// relative widths
+  columns: (1.7fr, 1fr, 1fr),
+  // relative widths
   column-gutter: 8mm,
-  
+
   stack(
     dir: ttb,
     spacing: 4mm,
     table(
       columns: (1fr, 0.7fr, 0.9fr, 1fr),
       align: center + horizon,
-      table.header(
-        [*Denumire*], [*Simbol mărime*], [*Simbol dimensiune*], [*Unitate*]
-      ),
+      table.header([*Denumire*], [*Simbol mărime*], [*Simbol dimensiune*], [*Unitate*]),
       [Lungime], [$l$], [$upright(L)$], [metru #box[– m]],
       [Timp], [$t$], [$upright(T)$], [secundă #box[– s]],
       [Masă], [$m$], [$upright(M)$], [kilogram #box[– kg]],
-      [Intensitatea curentului electric],
-      [$I$],
-      [$upright(I)$],
-      [amper #box[– A]],
+      [Intensitatea curentului electric], [$I$], [$upright(I)$], [amper #box[– A]],
 
       [Temperatura absolută], [$T$], [$upright(theta)$], [kelvin #box[– K]],
       [Cantitate de substanță], [$n$], [$upright(N)$], [mol #box[– mol]],
-      [Intensitatea radiată a fluxului de lumină],
-      [$I_v$],
-      [$upright(J)$],
-      [candelă #box[– cd]],
+      [Intensitatea radiată a fluxului de lumină], [$I_v$], [$upright(J)$], [candelă #box[– cd]],
     ),
     table(
       columns: (2fr, 0.8fr, 1.8fr, 1.5fr),
@@ -50,14 +43,14 @@
         table.cell(colspan: 4, align: center)[*Constante utile*],
         [*Constantă*], [*Simbol*], [*Valoare*], [*U.M.*],
       ),
-      [Pi],[$upright(pi)$],[$3.141592653"..."$],[$dash.em$],
-      
-      [Numărul lui Euler],[$e$],[$2.718281828"..."$],[$dash.em$],
-      
+      [Pi], [$upright(pi)$], [$3.141592653"..."$], [$dash.em$],
+
+      [Numărul lui Euler], [$e$], [$2.718281828"..."$], [$dash.em$],
+
       [Viteza luminii în vid], [$upright(c)$], [$~2.998 times 10^8$], [$"ms"^(-1)$],
 
       [Numărul lui Avogadro], [$upright(N_A)$], [$~6.022 times 10^(23)$], [$"mol"^(-1)$],
-      
+
       [Accelerația gravitațională], [$upright(g)$], [$~9.81$], [$"ms"^(-2)$],
     ),
   ),
@@ -89,8 +82,10 @@
       align: (x, _) => (right, center, center).at(x) + horizon,
       fill: banded(header-rows: 2),
       table.header(
-        table.cell(colspan: 2, align: center + horizon)[*Prefix*], 	// horizontal merge
-        table.cell(rowspan: 2, align: center + horizon)[*Factor*], 	// vertical merge
+        table.cell(colspan: 2, align: center + horizon)[*Prefix*],
+        // horizontal merge
+        table.cell(rowspan: 2, align: center + horizon)[*Factor*],
+        // vertical merge
         [*Nume*], [*Simbol*],
       ),
       ..rows.map(((name, sym, exp)) => (name, sym, $10^#exp$)).flatten(),
