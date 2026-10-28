@@ -250,7 +250,9 @@ subsection, and @sec:math covered the maths.#footnote[Footnotes are
     stroke: (_, y) => if y == 0 { (top: 1pt, bottom: 0.5pt) },
     fill: (_, y) => if y > 0 and calc.even(y) { luma(245) },
     table.header[*Region*][*Q1*][*Q2*][*Total*],
-    ..sales.map(((region, q1, q2)) => (region, str(q1), str(q2), str(q1 + q2))).flatten(),
+    ..sales
+      .map(((region, q1, q2)) => (region, str(q1), str(q2), str(q1 + q2)))
+      .flatten(),
     table.hline(stroke: 0.5pt),
     table.cell(colspan: 3, align: right)[*Grand total*],
     [*#total*],
@@ -292,7 +294,9 @@ subsection, and @sec:math covered the maths.#footnote[Footnotes are
 #stack(
   dir: ltr,
   spacing: 6pt,
-  ..range(5).map(i => square(size: 14pt + i * 4pt, fill: accent.lighten(i * 15%))),
+  ..range(5).map(i => square(size: 14pt + i * 4pt, fill: accent.lighten(
+    i * 15%,
+  ))),
 )
 
 #v(6pt)
@@ -357,7 +361,11 @@ Methods #box(width: 1fr, repeat[.]) 17
 
 #v(6pt)
 // Colour handling: rotate hues, lighten, mix, gradients from built-in colour maps.
-#range(8).map(i => box(width: 1cm, height: 6mm, fill: accent.rotate(i * 45deg))).join(h(2pt))
+#(
+  range(8)
+    .map(i => box(width: 1cm, height: 6mm, fill: accent.rotate(i * 45deg)))
+    .join(h(2pt))
+)
 #v(2pt)
 #rect(width: 100%, height: 8mm, fill: gradient.linear(..color.map.turbo))
 #line(length: 100%, stroke: (paint: accent, thickness: 1.5pt, dash: "dashed"))
@@ -398,7 +406,10 @@ Methods #box(width: 1fr, repeat[.]) 17
 #table(
   columns: 2,
   table.header[*Planet*][*Distance from the Sun*],
-  ..planets.pairs().map(((name, au)) => (upper(name.first()) + name.slice(1), [#au AU])).flatten(),
+  ..planets
+    .pairs()
+    .map(((name, au)) => (upper(name.first()) + name.slice(1), [#au AU]))
+    .flatten(),
 )
 
 #{
@@ -442,7 +453,9 @@ Typst compiles in about 42 ms, and *strong* text is recoloured.
 // --shell-escape).
 #[
   #show raw.line: it => {
-    box(width: 1.4em, align(right, text(fill: gray, size: 0.85em, str(it.number))))
+    box(width: 1.4em, align(right, text(fill: gray, size: 0.85em, str(
+      it.number,
+    ))))
     h(0.7em)
     it.body
   }

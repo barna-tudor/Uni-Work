@@ -25,15 +25,23 @@
     table(
       columns: (1fr, 0.7fr, 0.9fr, 1fr),
       align: center + horizon,
-      table.header([*Denumire*], [*Simbol mărime*], [*Simbol dimensiune*], [*Unitate*]),
+      table.header(
+        [*Denumire*], [*Simbol mărime*], [*Simbol dimensiune*], [*Unitate*]
+      ),
       [Lungime], [$l$], [$upright(L)$], [metru #box[– m]],
       [Timp], [$t$], [$upright(T)$], [secundă #box[– s]],
       [Masă], [$m$], [$upright(M)$], [kilogram #box[– kg]],
-      [Intensitatea curentului electric], [$I$], [$upright(I)$], [amper #box[– A]],
+      [Intensitatea curentului electric],
+      [$I$],
+      [$upright(I)$],
+      [amper #box[– A]],
 
       [Temperatura absolută], [$T$], [$upright(theta)$], [kelvin #box[– K]],
       [Cantitate de substanță], [$n$], [$upright(N)$], [mol #box[– mol]],
-      [Intensitatea radiată a fluxului de lumină], [$I_v$], [$upright(J)$], [candelă #box[– cd]],
+      [Intensitatea radiată a fluxului de lumină],
+      [$I_v$],
+      [$upright(J)$],
+      [candelă #box[– cd]],
     ),
     table(
       columns: (2fr, 0.8fr, 1.8fr, 1.5fr),
@@ -47,9 +55,15 @@
 
       [Numărul lui Euler], [$e$], [$2.718281828"..."$], [$dash.em$],
 
-      [Viteza luminii în vid], [$upright(c)$], [$~2.998 times 10^8$], [$"ms"^(-1)$],
+      [Viteza luminii în vid],
+      [$upright(c)$],
+      [$~2.998 times 10^8$],
+      [$"ms"^(-1)$],
 
-      [Numărul lui Avogadro], [$upright(N_A)$], [$~6.022 times 10^(23)$], [$"mol"^(-1)$],
+      [Numărul lui Avogadro],
+      [$upright(N_A)$],
+      [$~6.022 times 10^(23)$],
+      [$"mol"^(-1)$],
 
       [Accelerația gravitațională], [$upright(g)$], [$~9.81$], [$"ms"^(-2)$],
     ),
