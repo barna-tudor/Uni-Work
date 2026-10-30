@@ -1,20 +1,6 @@
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node, shapes
-#set text(
-  lang: "ro",
-  size: 12pt,
-)
-#set page(
-  paper: "a4",
-  margin: 8.5mm,
-  header: none,
-  numbering: "1 / 1",
-)
-#set heading(
-  numbering: none,
-)
-
-#show title: set align(center)
-#title[Reprezentarea in sisteme de calcul]
+#import "template.typ": *
+#show: conf
+#title[Seminar 1: Reprezentarea in sisteme de calcul]
 #align(center)[
   _
   Informație vs. Data \
@@ -23,7 +9,7 @@
   _
 ]
 #divider()
-= Informația
+== Informația
 _
 - Noțiune primară, de bază
 - atribut al materiei
@@ -44,7 +30,7 @@ _
   Sistem de calcul: orice formă inteligentă de sistems
 ]
 
-= Calculatorul
+== Calculatorul
 #columns(2)[
   #align(center)[
     #diagram(
@@ -72,7 +58,7 @@ _
       edge((2, 0), (1, 1)),
     )]
 ]
-= Entropia informațională
+== Entropia informațională
 - Măsură a gradului de nedeterminare
 - $tilde$nr. maxim de stări ale unui sistem
 *Pe n biți se pot reprezenta $2^n$ valori:\ *
