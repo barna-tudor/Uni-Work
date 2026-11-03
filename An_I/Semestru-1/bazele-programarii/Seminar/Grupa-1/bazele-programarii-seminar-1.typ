@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "../../../../../template.typ": *
 #show: conf
 #title[Seminar 1: Reprezentarea in sisteme de calcul]
 #align(center)[
@@ -25,7 +25,11 @@ _
     edge("-|>"),
     node((1, 0), align(center)[Sistem de calcul \ \ Memorie, Procesor]),
     edge("-|>"),
-    node((2, 0), [Date de ieșire \ (output)], shape: fletcher.shapes.hexagon),
+    node(
+      (2, 0),
+      [Date de ieșire \ (output)],
+      shape: fletcher.shapes.hexagon,
+    ),
   )\
   Sistem de calcul: orice formă inteligentă de sistems
 ]

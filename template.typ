@@ -12,19 +12,27 @@
   label, enum(..items),
 )
 
+#let accent = rgb("#a684ff")
+#let callout(title: "Observație", tint: accent, body) = block(
+  width: 100%,
+  fill: tint.lighten(88%),
+  stroke: (left: 3pt + tint, right: 1pt + tint),
+  inset: 10pt,
+  radius: (right: 5pt),
+  [*#title.* #body],
+)
+
 #let conf(doc) = {
   set text(
     lang: "ro",
-    size: 12pt,
+    size: 14pt,
+    font: "New Computer Modern",
   )
   set page(
     paper: "a4",
     margin: 8.5mm,
     header: none,
     numbering: "1 / 1",
-  )
-  set heading(
-    numbering: none,
   )
   show title: set align(center)
   doc

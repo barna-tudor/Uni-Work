@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "../../../../../template.typ": *
 #show: conf
 #title[Seminar 2]
 == Formulele unui sistem ponderat
