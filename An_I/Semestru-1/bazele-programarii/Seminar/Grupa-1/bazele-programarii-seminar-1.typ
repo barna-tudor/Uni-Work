@@ -35,7 +35,6 @@ _
 ]
 
 == Calculatorul
-#columns(2)[
   #align(center)[
     #diagram(
       edge-stroke: 1pt,
@@ -48,7 +47,6 @@ _
       edge((2, 0), (3, 1)),
       edge((2, 0), (1, 1)),
     )]
-  #colbreak()
   #align(center)[
     #diagram(
       edge-stroke: 1pt,
@@ -61,23 +59,18 @@ _
       edge((2, 0), (3, 1)),
       edge((2, 0), (1, 1)),
     )]
-]
 == Entropia informațională
 - Măsură a gradului de nedeterminare
 - $tilde$nr. maxim de stări ale unui sistem
-*Pe n biți se pot reprezenta $2^n$ valori:\ *
-#place(
-  bottom,
-  table(
-    columns: 3,
-    align: center + horizon,
-    table.header[*Dec*][*Binary*][*Hex*],
-    ..range(16)
-      .map(n => {
-        let bin = str(n, base: 2)
-        (str(n), "0" * (4 - bin.len()) + bin, upper(str(n, base: 16)))
-      })
-      .flatten(),
-  ),
-)
-
+#align(center)[*Pe n biți se pot reprezenta $2^n$ valori: *
+#table(
+  columns: 3,
+  align: center + horizon,
+  table.header[*Dec*][*Binary*][*Hex*],
+  ..range(16)
+    .map(n => {
+      let bin = str(n, base: 2)
+      (str(n), "0" * (4 - bin.len()) + bin, upper(str(n, base: 16)))
+    })
+    .flatten(),
+)]
