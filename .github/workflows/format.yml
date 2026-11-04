@@ -1,0 +1,16 @@
+name: Format check
+on:
+  pull_request:
+    paths: ['**.typ']
+
+env:
+  TYPSTYLE_VERSION: "0.14.4"   # keep in sync with `typstyle --version` locally
+
+jobs:
+  typstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cargo-bins/cargo-binstall@main
+      - run: cargo binstall --no-confirm "typstyle@${TYPSTYLE_VERSION}"
+      - run: typstyle --check .
