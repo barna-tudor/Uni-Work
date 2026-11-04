@@ -1,19 +1,40 @@
 # Uni-Work
 
-University coursework (ULBS), written in [Typst](https://typst.app/) and organized by year and semester.
+University coursework (ULBS), organized by year and semester. Most documents are written in [Typst](https://typst.app/); some courses also contain code / files for their respective coursework.
+
+## Published PDFs
+
+Compiled PDFs are available at **<https://barna-tudor.github.io/Uni-Work/>**.
+
+Only Typst documents are published: every `main.typ` in the repository is compiled to `<folder name>.pdf` in the same relative location. 
+
+`An_I/Semestru-1/Algebra/main.typ` becomes `An_I/Semestru-1/Algebra/Algebra.pdf`.
+
+Nothing else in the repository (code, data, other file types) is published.
+
+Until the repo becomes up to date with coursework, the site is rebuilt manually, so it can lag behind `main`. Will change to automatic on-push later.
 
 ## Repository layout
 
 ```
 .
+├── .github/workflows/
+│   ├── format.yml      # typstyle check on pull requests
+│   └── pdfs.yml        # manual build + publish of PDFs
 ├── An_I/
 │   └── Semestru-1/     # Year 1, semester 1 coursework
 ├── template.typ        # Shared document template
-├── Typst-Demo.typ      # Example document using the template
+├── Typst-Demo.typ      # Demo of Typst Features
 └── .gitignore
 ```
 
-Files are grouped as `An_<year>/Semestru-<n>/<course>/`. Documents import the shared template via a root-relative path (e.g. `#import "../../../template.typ": *`), which is why every compile command below passes `--root` pointing at the repository root.
+Files are grouped as `An_<year>/Semestru-<n>/<course>/{Curs/Lab/Seminar}`.
+
+### Conventions
+
+- Each publishable document has an entry point named `main.typ`. A document may consist of several files (chapters, helpers) as long as `main.typ` imports them.
+- Documents import the shared template with a root-relative path (e.g. `#import "/template.typ": *`). This is why every compile command passes `--root` pointing at the repository root.
+- Run `typstyle` before opening a pull request (see below).
 
 ## Requirements
 
@@ -32,7 +53,7 @@ cargo install --locked typst-cli     # any platform with Rust
 
 # Typstyle
 brew install typstyle                # macOS
-cargo install typstyle               # any platform with Rust
+cargo install typstyle --locked      # any platform with Rust
 # Windows / Linux: download a binary from
 # https://github.com/typstyle-rs/typstyle/releases
 ```
@@ -44,28 +65,20 @@ typst --version
 typstyle --version
 ```
 
-## Usage
+CI pins a specific typstyle version (`TYPSTYLE_VERSION` in `.github/workflows/format.yml`). **Use the same version locally**.
 
-Run all commands from the repository root.
+## Continuous integration
 
-Compile one file:
+| Workflow | Trigger | Description |
+| --- | --- | --- |
+| `format.yml` | Pull requests that touch `.typ` files | Runs `typstyle --check .` and fails if any file is unformatted. |
+| `pdfs.yml` | Manual only (for now) | Compiles every `main.typ`, generates an index page, and deploys the result to GitHub Pages. |
 
-```sh
-typst compile --root . path/to/file.typ
-```
+## Format and compile everything locally
 
-Format one file in place, or check formatting without modifying it:
+Each snippet below formats and then compiles every `.typ` file under the current directory, using the current directory as the Typst root. A failure on one file is reported and does not stop the rest.
 
-```sh
-typstyle --inplace path/to/file.typ # format
-typstyle --check path/to/file.typ # check formatting
-```
-
-## Format and compile everything
-
-Each snippet below recursively formats (for the purpose of contributing) and then compiles every `.typ` file under the current directory, using the current directory as the Typst root. A failure on one file is reported and does not stop the rest.
-
-> Compiling every `.typ` file includes `template.typ`, which produces its own PDF. Skip it if you don't want that.
+> This compiles every `.typ` file, including ones that are only imported by others (such as `template.typ`), so extra PDFs may appear. They are not published; CI only builds `main.typ` files.
 
 ### Bash / zsh (Linux)
 
@@ -134,4 +147,4 @@ end
 ## Notes
 
 - `--root` must contain every file being compiled and every file those files import. Running from the repository root satisfies both.
-- Compiled PDFs are written next to their source files.
+- Locally compiled PDFs are written next to their source files.
