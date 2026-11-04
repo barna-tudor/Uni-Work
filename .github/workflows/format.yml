@@ -4,7 +4,7 @@ on:
     paths: ['**.typ']
 
 env:
-  TYPSTYLE_VERSION: "0.14.4"   # keep in sync with `typstyle --version` locally
+  TYPSTYLE_VERSION: "0.15.2"   # keep in sync with `typstyle --version` locally
 
 jobs:
   typstyle:
