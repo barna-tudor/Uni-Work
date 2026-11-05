@@ -1,0 +1,137 @@
+/* thank you claudiu (claude) */
+
+:root {
+    --bg: #fafafa;
+    --fg: #1f2328;
+    --muted: #656d76;
+    --border: #d8dee4;
+    --hover: #eef2f6;
+    --link: #0969da;
+    --accent: #0969da;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0d1117;
+        --fg: #e6edf3;
+        --muted: #8d96a0;
+        --border: #30363d;
+        --hover: #161b22;
+        --link: #58a6ff;
+        --accent: #58a6ff;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+body {
+    margin: 0 auto;
+    max-width: 56rem;
+    padding: max(2rem, env(safe-area-inset-top)) 1rem max(2rem, env(safe-area-inset-bottom));
+    font: 15px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 .25rem;
+}
+
+nav {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    overflow-wrap: anywhere;
+}
+
+nav a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: .45rem .9rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: .85em;
+    border-bottom: 1px solid var(--border);
+}
+
+td.num,
+th.num {
+    text-align: right;
+}
+
+td.date,
+td.num {
+    color: var(--muted);
+}
+
+tbody tr:hover {
+    background: var(--hover);
+}
+
+td.name {
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+td.name a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+td.name a:hover {
+    text-decoration: underline;
+}
+
+td.name a::before {
+    display: inline-block;
+    width: 1.6em;
+}
+
+a.up::before {
+    content: "\2191";
+}
+
+a.dir::before {
+    content: "\1F4C1";
+}
+
+a.file::before {
+    content: "\1F4C4";
+}
+
+@media (max-width: 36rem) {
+    .date {
+        display: none;
+    }
+}
