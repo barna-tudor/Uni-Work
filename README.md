@@ -6,11 +6,9 @@ University coursework (ULBS), organized by year and semester. Most documents are
 
 Compiled PDFs are available at **<https://barna-tudor.github.io/Uni-Work/>**.
 
-Only Typst documents are published: every `main.typ` in the repository is compiled to `<folder name>.pdf` in the same relative location. 
+Only Typst documents are published, details under Conventions
 
 `An_I/Semestru-1/Algebra/main.typ` becomes `An_I/Semestru-1/Algebra/Algebra.pdf`.
-
-Nothing else in the repository (code, data, other file types) is published.
 
 Until the repo becomes up to date with coursework, the site is rebuilt manually, so it can lag behind `main`. Will change to automatic on-push later.
 
@@ -37,7 +35,7 @@ Files are grouped as `An_<year>/Semestru-<n>/<course>/{Curs/Lab/Seminar}`.
 - Run `typstyle` before opening a pull request (see below).
 
 ## Requirements
-
+For Typst:
 | Tool | Purpose | Install guide |
 | --- | --- | --- |
 | `typst` | Compiler | [Typst installation](https://github.com/typst/typst#installation) |
@@ -67,11 +65,13 @@ typstyle --version
 
 CI pins a specific typstyle version (`TYPSTYLE_VERSION` in `.github/workflows/format.yml`). **Use the same version locally**.
 
-## Continuous integration
+For Subjects with lab-work:
+`TBD`
 
+## CI
 | Workflow | Trigger | Description |
 | --- | --- | --- |
-| `format.yml` | Pull requests that touch `.typ` files | Runs `typstyle --check .` and fails if any file is unformatted. |
+| `format.yml` | Pull requests that touch `.typ` files | Runs `typstyle --check <file>`, fails on non-formatted files |
 | `pdfs.yml` | Manual only (for now) | Compiles every `main.typ`, generates an index page, and deploys the result to GitHub Pages. |
 
 ## Format and compile everything locally
@@ -98,7 +98,7 @@ typst-compile-all() {
 
 ### macOS
 
-macOS uses zsh by default, and the function above works unchanged (BSD `find` supports `-print0`). Add it to `~/.zshrc`, then reload:
+macOS uses zsh by default, the function above works unchanged. Add it to `~/.zshrc`, then reload:
 
 ```sh
 source ~/.zshrc
@@ -147,4 +147,4 @@ end
 ## Notes
 
 - `--root` must contain every file being compiled and every file those files import. Running from the repository root satisfies both.
-- Locally compiled PDFs are written next to their source files.
+- Locally compiled PDFs are written next to their source files. E.g `/An-1/Semestru-1/Bazele/Seminar/seminar-1.typ` compiles to `An-1/Semestru-1/Bazele/Seminar/seminar-1.pdf`
