@@ -35,42 +35,42 @@ _
 ]
 
 == Calculatorul
-  #align(center)[
-    #diagram(
-      edge-stroke: 1pt,
-      node-stroke: 1pt,
-      node-corner-radius: 5pt,
-      node-shape: shapes.rect,
-      node((2, 0), [Procesor]),
-      node((3, 1), [Unitate de\ Control]),
-      node((1, 1), [Unitate\ Logica\ Aritmetica]),
-      edge((2, 0), (3, 1)),
-      edge((2, 0), (1, 1)),
-    )]
-  #align(center)[
-    #diagram(
-      edge-stroke: 1pt,
-      node-stroke: 1pt,
-      node-corner-radius: 5pt,
-      node-shape: shapes.rect,
-      node((2, 0), [Memorie]),
-      node((1, 1), [Principală\ _permanentă\ dar înceată_]),
-      node((3, 1), [Cache\ _rapidă \ dar temporară_]),
-      edge((2, 0), (3, 1)),
-      edge((2, 0), (1, 1)),
-    )]
+#align(center)[
+  #diagram(
+    edge-stroke: 1pt,
+    node-stroke: 1pt,
+    node-corner-radius: 5pt,
+    node-shape: shapes.rect,
+    node((2, 0), [Procesor]),
+    node((3, 1), [Unitate de\ Control]),
+    node((1, 1), [Unitate\ Logica\ Aritmetica]),
+    edge((2, 0), (3, 1)),
+    edge((2, 0), (1, 1)),
+  )]
+#align(center)[
+  #diagram(
+    edge-stroke: 1pt,
+    node-stroke: 1pt,
+    node-corner-radius: 5pt,
+    node-shape: shapes.rect,
+    node((2, 0), [Memorie]),
+    node((1, 1), [Principală\ _permanentă\ dar înceată_]),
+    node((3, 1), [Cache\ _rapidă \ dar temporară_]),
+    edge((2, 0), (3, 1)),
+    edge((2, 0), (1, 1)),
+  )]
 == Entropia informațională
 - Măsură a gradului de nedeterminare
 - $tilde$nr. maxim de stări ale unui sistem
 #align(center)[*Pe n biți se pot reprezenta $2^n$ valori: *
-#table(
-  columns: 3,
-  align: center + horizon,
-  table.header[*Dec*][*Binary*][*Hex*],
-  ..range(16)
-    .map(n => {
-      let bin = str(n, base: 2)
-      (str(n), "0" * (4 - bin.len()) + bin, upper(str(n, base: 16)))
-    })
-    .flatten(),
-)]
+  #table(
+    columns: 3,
+    align: center + horizon,
+    table.header[*Dec*][*Binary*][*Hex*],
+    ..range(16)
+      .map(n => {
+        let bin = str(n, base: 2)
+        (str(n), "0" * (4 - bin.len()) + bin, upper(str(n, base: 16)))
+      })
+      .flatten(),
+  )]

@@ -69,7 +69,7 @@
 }
 #let theorem = callout.with("Teoremă")
 #let proof = callout.with("Demonstrație")
-#let obs = callout.with("Observație")
+#let remark = callout.with("Observație")
 #let warning = callout.with("Atenție")
 #let example = callout.with("Exemplu")
 #let definition = callout.with("Definiție")

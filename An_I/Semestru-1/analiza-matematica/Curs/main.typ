@@ -23,7 +23,7 @@ Fie $X eq.not emptyset$
   + $d(x,y) <= d(x,z)+d(z,y),forall x,y,z in RR$\
   $(X,d)$ se numește *Spațiu metric*
 ]
-#obs(position: "last")[
+#remark(position: "last")[
   $forall X eq.not emptyset$, se poate defini o metrică discretă prin:
   $
     d:X times X arrow RR, d(x,y)=cases(1"," x eq.not y, 0"," x eq y)
@@ -51,12 +51,12 @@ Fie $(X,d)$ un spațiu metric.
   $ forall epsilon>0, exists n_epsilon: forall n>n_epsilon, d(x_n,a)<epsilon $
   $limits(lim)_(n arrow infinity)x_n=a$
 ]
-#obs(position: "middle")[
+#remark(position: "middle")[
   $
     limits(lim)_(n arrow infinity)x_n=a <=> limits(lim)_(n arrow infinity)d(x_n,a)=0
   $
 ]
-#obs(position: "last")[\
+#remark(position: "last")[\
   Limita $a$ a unui șir este *unică*.\ (Demonstrat prin reducere a absurd)
 ]
 #definition[
