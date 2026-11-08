@@ -1,6 +1,7 @@
 # Uni-Work
 
 University coursework (ULBS), organized by year and semester. Most documents are written in [Typst](https://typst.app/); some courses also contain code / files for their respective coursework.
+Course Notes also contain things sent on our year's groupchat(s)
 
 ## Published PDFs
 
