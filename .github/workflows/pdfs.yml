@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: typst-community/setup-typst@v5
 
-      - name: Compile every main.typ
+      - name: Compile main.typ and all.typ
         run: |
           mkdir site
           pattern='(^|/)Semestru-[^/]*/(.+)$'
@@ -31,10 +31,14 @@ jobs:
 
             name=${rel//\//-}; name=${name// /_}; name=${name,,}
 
+            # only all-in-ones get the flag
+            flags=()
+            [ "$(basename "$src")" = "all.typ" ] && flags=(--input aio=true)
+
             out="site/$dir/$name.pdf"
             mkdir -p "$(dirname "$out")"
-            typst compile --root . "$src" "$out"
-          done < <(find . -name main.typ -not -path './site/*' -print0)
+            typst compile --root . "${flags[@]}" "$src" "$out"
+          done < <(find . \( -name main.typ -o -name all.typ \) -not -path './site/*' -print0)
 
       - name: Generate directory indexes
         run: bash .github/scripts/make-index.sh site
