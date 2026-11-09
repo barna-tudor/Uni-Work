@@ -1,5 +1,3 @@
-// template workaround to make all-in-one possible while keeping each seminar note individually compile-able
-
 #let labeled-list(label, ..items) = grid(
   columns: (auto, 1fr),
   column-gutter: 0.5em,
@@ -74,8 +72,9 @@
 #let example = callout.with("Exemplu")
 #let definition = callout.with("Definiție")
 
-
-#let conf(doc) = {
+// cursed template workaround to make all-in-one possible while keeping each seminar note individually compile-able if desired
+#let aio = sys.inputs.at("aio", default: "false") == "true"
+#let base(doc) = {
   set text(
     lang: "ro",
     size: 14pt,
@@ -89,4 +88,7 @@
   show title: set align(center)
   doc
 }
+// children keep using `#show: conf`; it becomes a no-op in all-in-one mode
+#let conf(doc) = if aio { doc } else { base(doc) }
+
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node, shapes
