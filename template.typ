@@ -15,6 +15,7 @@
   "Teoremă": blue.lighten(30%),
   "Demonstrație": aqua,
   "Observație": fuchsia,
+  "Observații": fuchsia,
   "Atenție": red,
   "Exemplu": green,
   "Definiție": purple.lighten(30%),
@@ -68,16 +69,18 @@
 #let theorem = callout.with("Teoremă")
 #let proof = callout.with("Demonstrație")
 #let remark = callout.with("Observație")
+#let remarks = callout.with("Observații")
 #let warning = callout.with("Atenție")
 #let example = callout.with("Exemplu")
 #let definition = callout.with("Definiție")
+
 
 // cursed template workaround to make all-in-one possible while keeping each seminar note individually compile-able if desired
 #let aio = sys.inputs.at("aio", default: "false") == "true"
 #let base(doc) = {
   set text(
     lang: "ro",
-    size: 14pt,
+    size: 12pt,
     font: "New Computer Modern",
   )
   set page(

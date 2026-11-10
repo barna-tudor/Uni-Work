@@ -4,7 +4,7 @@
 #title[Curs Algebră Liniară]
 
 
-#for n in range(1, 6) {
+#for n in range(2, 6) {
   pagebreak(weak: true)
   [
     // #set heading(offset: 1)  // child `=` becomes level 2
