@@ -1,20 +1,9 @@
-#import "../../../../template.typ": *
+#import "/template.typ": *
 #show: conf
-#show heading.where(level: 2): set heading(
-  numbering: (..nums) => numbering("I)", nums.pos().last()),
-)
 
-#title[Analiza Matematica - An 1, sem 1]
+#title[Curs 5: Spații metrice; Șiruri în spații metrice;\ Teorema punctului fix (Banach)]
+= Spații metrice.
 
-= Curs 1
-#pagebreak()
-= Curs 2
-#pagebreak()
-= Curs 5
-#pagebreak()
-= Curs 4
-#title[Spații metrice; Șiruri în spații metrice;\ Teorema punctului fix (Banach)]
-== Spații metrice.
 Fie $X eq.not emptyset$
 #definition(position: "first")[
   Se numește metrică (distanță) pe X o aplicație $d:X times X arrow RR$ care verifică\
@@ -29,7 +18,7 @@ Fie $X eq.not emptyset$
     d:X times X arrow RR, d(x,y)=cases(1"," x eq.not y, 0"," x eq y)
   $
 ]
-=== Exemple:
+*Exemple:*
 + $X = RR, d:RR times RR arrow RR; d(x,y)=abs(x-y)$
 + $X = CC, d:CC times CC arrow RR, d(z_1,z_2)=abs(z_1-z_2)$
 + $X=RR^n, d:RR^n times RR^n arrow RR, d(x,y)=sqrt(sum_(k=1)^(n)(x_k-y_k)^2)$\ $x=(x_1,x_2,dots,x_n), y=(y_1,y_2,dots,y_n)$
@@ -43,8 +32,8 @@ Fie $X eq.not emptyset$
   + $norm(x+y)<= norm(x)+norm(y)$
   $(X,norm(dot.op))$ se numește spațiu vectorial "normat"
 ]
-
-== Șiruri în spațiu metric
+#pagebreak()
+= Șiruri în spațiu metric
 Fie $(X,d)$ un spațiu metric.
 #definition(position: "first")[
   Spunem că un șir $(x_n)_(n>=0)$ din $X$ este _convergent la $a$_ dacă
@@ -75,7 +64,7 @@ Fie $(X,d)$ un spațiu metric.
     Considerăm $n>n_epsilon$ și $p in NN$\
     $=> d(x_(n+p),x_n)<d(x_(n+p),a)+d(x_n,a) < limits(2 epsilon)_(epsilon->0 => 2epsilon->0)$]
 ]
-=== Exemple
+*Exemple:*
 + $X=RR^2, d(x,y)=sqrt((x_1-y_1)^2-(x_2-y_2)^2)$\
   $(X_n)_(n>=0); x_n=((n+1)/(n+2),e^(-n))$\
   $a = l = (1,0)$
@@ -109,40 +98,28 @@ Fie $(X,d)$ un spațiu metric.
   ]
 ]
 *Exemplu*\
-+ $(X_n), x_n = ( underparen(1/(n+1), x_n^((1))) , underparen(sqrt(n+1)-sqrt(n), x_n^((2))) , underparen(3, x_n^((3))) )$\
-  $cases(
-    reverse: #true,
-    limits(lim)_(n->infinity) x_n^((1)) = 0,
-    limits(lim)_(n->infinity) x_n^((2)) = 0,
-    limits(lim)_(n->infinity) x_n^((3)) =3,
++ $(X_n), x_n =display(\( underparen(1/(n+1), display(x_n^((1)))) \, underparen(sqrt(n+1)-sqrt(n), display(x_n^((2)))) \, underparen(3, display(x_n^((3)))) \))$\
+
+  $display(
+    cases(
+      reverse: #true,
+      limits(lim)_(n->infinity) x_n^((1)) = 0,
+      limits(lim)_(n->infinity) x_n^((2)) = 0,
+      limits(lim)_(n->infinity) x_n^((3)) =3,
+    )
   )
-  => limits(lim)_(n->infinity) x_n = (0,0,3)$
-+ $(x_n), x_n = (underparen(n, x_n^((1))),underparen((n+3)/(n+5), x_n^((2)))) in RR^2$\
-  $cases(
-    reverse: #true,
-    limits(lim)_(n->infinity) x_n^((1)) = infinity,
-    limits(lim)_(n->infinity) x_n^((2)) = 1,
+  => limits(lim)_(n->infinity) x_n = (0,0,3)$\
+
++ $(x_n), x_n =display(\(underparen(n, display(x_n^((1))))\,underparen((n+3)/(n+5), display(x_n^((2))))\)) in RR^2$\
+
+  $display(
+    cases(
+      reverse: #true,
+      limits(lim)_(n->infinity) x_n^((1)) = infinity,
+      limits(lim)_(n->infinity) x_n^((2)) = 1,
+    )
   )
   => exists.not limits(lim)_(n->infinity) x_n => "divergent"$
 
-== Teorema punctului fix (Banach)
-
 #pagebreak()
-= Curs 5
-#pagebreak()
-= Curs 6
-#pagebreak()
-= Curs 7
-#pagebreak()
-= Curs 8
-#pagebreak()
-= Curs 9
-#pagebreak()
-= Curs 10
-#pagebreak()
-= Curs 11
-#pagebreak()
-= Curs 12
-#pagebreak()
-= Curs 13
-#pagebreak()
+= Teorema punctului fix (Banach)
