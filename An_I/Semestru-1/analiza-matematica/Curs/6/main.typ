@@ -95,12 +95,52 @@ Fie $f,g:E->RR, E subset.eq RR^n$
 #pagebreak()
 = Limita unei funcții într-un punct
 
-Fie $f:E->RR, E subset.eq RR^n$ și $x^0$ un punct de acumulare a lui $E$
+Fie $f:E->RR, E subset.eq RR^n$ și $x^o$ un punct de acumulare a lui $E$
 #definition[
-  Spunem că $f$ are limita $l in RR$ în punctul $x^0$ dacă:
+  Spunem că $f$ are limita $l in RR$ în punctul $x^o$ dacă:
   $
-    forall U in V_l, exists v in V_x "a.î." f(x)in U, forall x in (U\\{x^0})inter E
+    forall U in V_l, exists v in V_x "a.î." f(x)in U, forall x in (U\\{x^o})inter E
   $
 
-  *Notație:* $l=limits(lim)_(x->x^0) f(x)$
+  *Notație:* $l=limits(lim)_(x->x^o) f(x)$
 ]
+
+#theorem[
+  În condițiile de mai sus sunt echivalente următoarele:
+  + $display(limits(lim)_(x->x^o) f(x) = l)$
+
+  + $display(forall epsilon > 0\, exists delta_epsilon > 0 "a.î." forall x in E "cu" norm(x-x^o)<delta_epsilon "să avem" |f(x)-l|<epsilon)$
+
+  + Pentru orice șir $(x_n)$ de puncte din $E$ cu $x_n eq.not x^o, forall n$ care converge către $x^o$, avem $display(limits(lim)_(n->infinity) f(x_n) = l)$
+]
+*Exemple:*\
+
+#remarks[
+  - Limita unei funcții într-un punct e *unică*.
+  - Cănd se deteremină limita unei funcții într-un punct, se consideră șiruri convergente către acest punct și se compară valoarea acestora prin $f$
+]
+
+#pagebreak()
+= Funcții continue
+
+Fie $f:E -> RR, E subset.eq RR^n, x^o in E$
+#definition[
+  Spunem că funcția $f$ este *continuă* în $x^o$ dacă:
+  $
+    forall V in V_(f(x^o)), exists U in V_(x^o) "a.î." forall x in V inter E, f(x) in V
+  $
+
+  Dacă $f$ continuă în orice punct din $E$, atunci spunem că $f$ continuă pe $E$
+]
+
+#theorem[
+  Următoarele afirmații sunt echivalente:
+  + $f$ este continuă în $x^o$
+
+  + $forall epsilon > 0, exists delta_epsilon >0 "a.î." forall x in E "cu" norm(x-x^o)<delta_epsilon, |f(x)-f(x^o)|<epsilon$
+
+  + $forall (x_n), x_n in E, forall n in NN "cu proprietatea că" limits(lim)_(n->infinity) x_n = x^o => limits(lim)_(n->infinity) f(x_n) = f(x^o)$
+]
+
+*Exemple*
+
