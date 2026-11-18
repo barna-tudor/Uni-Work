@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-# Thank you claudiu (claude)
+# Generate a styled, nginx-like "Index of /path/" index.html
 set -euo pipefail
 
 root=${1:?usage: make-index.sh <site-dir>}
 root=${root%/}
+
+# Landing page
+TITLE="Uni Notes"
+DESCRIPTION="University (ULBS) lecture / seminar notes, compiled from Typst sources. Browse by year, semester and course, or download everything at once."
+ZIP_NAME="uni-work.zip"
 
 cp "$(dirname "${BASH_SOURCE[0]}")/index.css" "$root/index.css"
 
@@ -59,6 +64,43 @@ entry_row() {
 		"$kind" "$href" "$(html_escape "$name")" "$(date -u -r "$entry" '+%Y-%m-%d %H:%M')" "$size"
 }
 
+# "An_I/Semestru-1/X" -> "An_I / Semestru-1 / X"; the site root (".") -> "/".
+heading_label() {
+	if [ "$1" = "." ]; then printf '/'; else printf '%s' "${1//\// / }"; fi
+}
+
+# Replaces the root index.html with a landing page: title, description, and all PDFs grouped by folder.
+landing() {
+	local current="" pdf dir
+	{
+		printf '<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n'
+		printf '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+		printf '<meta name="color-scheme" content="light dark">\n'
+		printf '<title>%s</title>\n<link rel="stylesheet" href="./index.css">\n<body class="landing">\n' "$(html_escape "$TITLE")"
+		printf '<header>\n<h1>%s</h1>\n<p class="lead">%s</p>\n' "$(html_escape "$TITLE")" "$(html_escape "$DESCRIPTION")"
+		if [ -f "$root/$ZIP_NAME" ]; then
+			printf '<a class="zip" href="%s">Download everything (%s)</a>\n' \
+				"$(url_encode "$ZIP_NAME")" "$(numfmt --to=iec-i --suffix=B "$(stat -c %s "$root/$ZIP_NAME")")"
+		fi
+		printf '</header>\n<main>\n'
+		while IFS= read -r -d '' pdf; do
+			pdf=${pdf#"$root"/}
+			dir=$(dirname "$pdf")
+			if [ "$dir" != "$current" ]; then
+				[ -n "$current" ] && printf '</ul>\n</section>\n'
+				current=$dir
+				printf '<section>\n<h2><a href="%s/">%s</a></h2>\n<ul class="pdfs">\n' \
+					"$(url_encode "$dir")" "$(html_escape "$(heading_label "$dir")")"
+			fi
+			printf '<li><a href="%s">%s</a><span>%s</span></li>\n' \
+				"$(url_encode "$pdf")" "$(html_escape "${pdf##*/}")" \
+				"$(numfmt --to=iec-i --suffix=B "$(stat -c %s "$root/$pdf")")"
+		done < <(find "$root" -name '*.pdf' -print0 | LC_ALL=C sort -z)
+		[ -n "$current" ] && printf '</ul>\n</section>\n'
+		printf '</main>\n'
+	} >"$root/index.html"
+}
+
 while IFS= read -r -d '' dir; do
 	rel=${dir#"$root"}
 	rel=${rel#/}
@@ -82,3 +124,5 @@ while IFS= read -r -d '' dir; do
 		printf '</tbody>\n</table></div>\n'
 	} >"$dir/index.html"
 done < <(find "$root" -type d -print0)
+
+landing
