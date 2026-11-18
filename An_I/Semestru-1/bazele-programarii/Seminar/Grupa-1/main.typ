@@ -1,8 +1,8 @@
-#include "bazele-programarii-seminar-1.typ"
+#include "individual/1/ main.typ"
 #pagebreak()
-#include "bazele-programarii-seminar-2.typ"
+#include "individual/2/main.typ"
 #pagebreak()
-#include "bazele-programarii-seminar-3.typ"
+#include "individual/3/main.typ"
 #pagebreak()
-#include "bazele-programarii-seminar-4.typ"
+#include "individual/4/main.typ"
 #pagebreak()

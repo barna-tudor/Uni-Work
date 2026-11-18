@@ -1,4 +1,4 @@
-#import "../../../../../template.typ": *
+#import "/template.typ": *
 #show: conf
 #title[Seminar 1: Reprezentarea in sisteme de calcul]
 #align(center)[

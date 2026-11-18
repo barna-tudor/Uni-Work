@@ -13,6 +13,6 @@
   [
     #set heading(offset: 1)
     #show title: it => heading(level: 1, offset: 0, it.body)  // child titles become level 1
-    #include str(n) + "/main.typ"
+    #include "individual/" + str(n) + "/main.typ"
   ]
 }
