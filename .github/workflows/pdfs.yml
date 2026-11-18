@@ -40,6 +40,13 @@ jobs:
             typst compile --root . "${flags[@]}" "$src" "$out"
           done < <(find . \( -name main.typ -o -name all.typ \) -not -path './site/*' -print0)
 
+      - name: Zip all PDFs
+        run: |
+          mv site uni-work
+          zip -r -q uni-work.zip uni-work
+          mv uni-work site
+          mv uni-work.zip site/
+
       - name: Generate directory indexes
         run: bash .github/scripts/make-index.sh site
 
