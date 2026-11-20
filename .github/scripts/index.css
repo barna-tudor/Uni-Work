@@ -36,8 +36,8 @@ body {
     font: 15px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-h1 {
-    font-size: 1.25rem;
+h2 {
+    font-size: 1.1rem;
     font-weight: 600;
     margin: 0 0 .25rem;
 }
@@ -134,16 +134,21 @@ a.file::before {
     }
 }
 
-/* Landing page */
-body.landing header {
+/* Site header */
+body>header {
     text-align: center;
-    margin: 3rem 0 2.5rem;
+    margin: 2.5rem 0 2.5rem;
 }
 
-body.landing h1 {
+body>header h1 {
     font-size: 2.25rem;
     letter-spacing: -.02em;
     margin: 0 0 .75rem;
+}
+
+body>header h1 a {
+    color: var(--fg);
+    text-decoration: none;
 }
 
 .lead {
@@ -163,67 +168,4 @@ body.landing h1 {
 
 .zip:hover {
     background: var(--hover);
-}
-
-section {
-    margin-bottom: 1.75rem;
-}
-
-h2 {
-    font-size: .95rem;
-    font-weight: 600;
-    margin: 0 0 .4rem;
-}
-
-h2 a {
-    color: var(--fg);
-    text-decoration: none;
-}
-
-h2 a:hover {
-    text-decoration: underline;
-}
-
-ul.pdfs {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-}
-
-ul.pdfs li {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: .45rem .9rem;
-}
-
-ul.pdfs li+li {
-    border-top: 1px solid var(--border);
-}
-
-ul.pdfs li:hover {
-    background: var(--hover);
-}
-
-ul.pdfs a {
-    color: var(--link);
-    text-decoration: none;
-    overflow-wrap: anywhere;
-}
-
-ul.pdfs a:hover {
-    text-decoration: underline;
-}
-
-ul.pdfs a::before {
-    content: "\1F4C4";
-    display: inline-block;
-    width: 1.6em;
-}
-
-ul.pdfs span {
-    color: var(--muted);
-    white-space: nowrap;
 }
