@@ -1,3 +1,6 @@
+#import "/template.typ": *
+#show: conf
+
 #set page(paper: "a4", flipped: true, margin: 8.5mm)
 // --- Input data ---
 // incline length (mm)
